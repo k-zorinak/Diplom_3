@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import api.User;
 import pom.*;
-import resources.UserCard;
+import api.UserCard;
 
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.Assert.assertEquals;
@@ -18,21 +18,13 @@ public class HeaderWithLoginTest extends BaseTest {
     public void setUp() {
         validUserData = User.getRandomUserValidData();
 
-        resources.UserCard userCard = new UserCard();
-
-        userCard.setName(validUserData.getName());
-        userCard.setEmail(validUserData.getEmail());
-        userCard.setPassword(validUserData.getPassword());
-
+        api.UserCard userCard = new api.UserCard(
+                validUserData.getEmail(),
+                validUserData.getPassword(),
+                validUserData.getName()
+                );
 
         UserAction.postRequestCreateUser(userCard);
-
-//        open(Registration.URL, Registration.class)
-//                .fillNameInput(validUserData.getName())
-//                .fillEmailInput(validUserData.getEmail())
-//                .fillPasswordInput(validUserData.getPassword())
-//                .clickButtonReg()
-//                .regPageDisappear();
 
         open(Login.URL, Login.class)
                 .fillEmailInput(validUserData.getEmail())

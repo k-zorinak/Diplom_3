@@ -18,12 +18,14 @@ import static io.restassured.RestAssured.given;
 public class User {
     private static final String BASE_URL = "https://stellarburgers.nomoreparties.site/";
     private static final String LOGIN_API = "api/auth/";
-    private static final Faker FAKER_RU = new Faker(new Locale("ru-RU"));
     private static final Faker FAKER_EN = new Faker(new Locale("en-GB"));
     private String email;
     private String password;
 
     public User(String email, String password, String name) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
     }
 
     public String getEmail() {

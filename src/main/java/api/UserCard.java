@@ -1,4 +1,4 @@
-package resources;
+package api;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,13 +38,5 @@ public class UserCard {
         this.email = email;
         this.password = password;
         this.name = name;
-    }
-
-    public UserCard(String email, String name) {
-        this.email = email;
-        this.name = name;
-    }
-
-    public UserCard() {
     }
 }
