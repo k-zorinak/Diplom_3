@@ -1,9 +1,11 @@
+import api.UserAction;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import api.User;
 import pom.*;
+import resources.UserCard;
 
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.Assert.assertEquals;
@@ -16,12 +18,21 @@ public class HeaderWithLoginTest extends BaseTest {
     public void setUp() {
         validUserData = User.getRandomUserValidData();
 
-        open(Registration.URL, Registration.class)
-                .fillNameInput(validUserData.getName())
-                .fillEmailInput(validUserData.getEmail())
-                .fillPasswordInput(validUserData.getPassword())
-                .clickButtonReg()
-                .regPageDisappear();
+        resources.UserCard userCard = new UserCard();
+
+        userCard.setName(validUserData.getName());
+        userCard.setEmail(validUserData.getEmail());
+        userCard.setPassword(validUserData.getPassword());
+
+
+        UserAction.postRequestCreateUser(userCard);
+
+//        open(Registration.URL, Registration.class)
+//                .fillNameInput(validUserData.getName())
+//                .fillEmailInput(validUserData.getEmail())
+//                .fillPasswordInput(validUserData.getPassword())
+//                .clickButtonReg()
+//                .regPageDisappear();
 
         open(Login.URL, Login.class)
                 .fillEmailInput(validUserData.getEmail())

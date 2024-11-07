@@ -8,6 +8,7 @@ import org.openqa.selenium.support.How;
 
 import static com.codeborne.selenide.Selenide.page;
 
+
 public class ForgotPassword {
     public static final String URL = "https://stellarburgers.nomoreparties.site/forgot-password";
     @FindBy(how = How.XPATH, using = "//a[text()='Войти']")

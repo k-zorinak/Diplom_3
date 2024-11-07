@@ -15,7 +15,7 @@ public class HeaderWithoutLoginTest extends BaseTest {
         open(Main.URL, Header.class).clickAccountLinkHeaderButton();
         page(Login.class).logInPageLoaded();
         String currentUrl = webdriver().driver().url();
-        assertEquals("Не вiерная ссылка", Login.URL, currentUrl);
+        assertEquals("Не верная ссылка", Login.URL, currentUrl);
     }
 
     @Test

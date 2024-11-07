@@ -9,11 +9,11 @@ public class BaseTest {
     @Before
     public void configureDriver() {
         if (System.getProperty("browser").equals("yandex")) {
+            String path = System.getenv("PROGRAMFILES(X86)");
             Configuration.browserSize = "1920x1080";
-            System.setProperty("webdriver.chrome.driver", "/Users/kamillarakhmatulina/Downloads/WebDriver/bin");
             DesiredCapabilities cup = new DesiredCapabilities();
             ChromeOptions options = new ChromeOptions();
-            options.setBinary("/Users/kamillarakhmatulina/Downloads/Local/Yandex/YandexBrowser/Application/browser.exe");
+            options.setBinary(path + "\\Yandex\\YandexBrowser\\Application\\browser.exe");
             cup.setCapability(CAPABILITY, options);
             Configuration.browserCapabilities = cup;
         } else {
